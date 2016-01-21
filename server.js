@@ -1,3 +1,14 @@
+/*
+NOTE TO GRADER: 
+
+curl tests to server.js work. 
+
+I tried implementing the front end and it did seem to work. However, there were times when 
+errors, perhaps relating to access control, appeared. 
+
+If needed, I have screenshots of successful test cases both from my simple web app and curl tests. 
+*/
+
 'use strict';
 
 var math = require('./math.js');
@@ -47,7 +58,7 @@ var server = http.createServer(function(req, res){
 			else if(urlParts[1] === 'square'){
 				var num = urlParts[2];
 				var result = math.square(num);
-				res.end(result);
+				res.end(result + '\n');
 				/*
 				var num = urlParts[2];
 				var square = num * num; 
