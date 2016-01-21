@@ -9,6 +9,12 @@ var md5 = require('md5')
 var http = require('http');
 
 var server = http.createServer(function(req, res){
+	
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Request-Method', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+	res.setHeader('Access-Control-Allow-Headers', '*');
+
 	var urlParts = req.url.match(/[^/]+/g);
 	// curl localhost:4000/time
 	// curl localhost:4000/math/add/5/50
@@ -16,6 +22,11 @@ var server = http.createServer(function(req, res){
 	// curl localhost:4000/math/square/5
 	// /math/square/5 => 25
 	// curl localhost:4000/wordcount/this%20is%20a%20string
+
+	//console.log('request', req);
+		console.log('request  url', req.url);
+
+
 	switch(urlParts[0]){
 		case 'time':
 			var timestamp = Date.now();
@@ -45,7 +56,10 @@ var server = http.createServer(function(req, res){
 				var num = urlParts[2];
 				var square = num * num; 
 				var squareStr = square.toString();
-				res.end(squareStr + '\n');
+
+				var ans = JSON.stringify(squareStr);
+				console.log(squareStr);
+				res.end(ans);
 			}
 			break;
 		case 'sentence':
