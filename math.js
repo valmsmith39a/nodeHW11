@@ -8,9 +8,9 @@ module.exports = {
 		return sum;
 	}, 
 	square: function square(number){
-		var square = num * num; 
+		var square = number * number; 
 		var squareStr = square.toString();
-		var ans = JSON.stringify(squareStr);
-		return ans;
+		//var ans = JSON.stringify(squareStr);
+		return squareStr;
 	}
 }
